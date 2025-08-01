@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MonJeux - Gestion de Personnages</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>MonJeux RPG</h1>
+    <div id="user-info">
+      <span id="user-role">Chargement...</span>
+      <button id="reset-timer">Réinitialiser le minuteur</button>
+    </div>
+  </header>
+
+  <nav>
+    <button class="tab-btn active" data-tab="my-characters">Mes Personnages</button>
+    <button class="tab-btn" data-tab="all-characters">Tous les Personnages</button>
+    <button class="tab-btn" data-tab="battle">Combat</button>
+    <button class="tab-btn" data-tab="logs">Journal de Combat</button>
+    <button class="tab-btn" data-tab="admin">Admin</button>
+  </nav>
+
+  <main>
+    <!-- Section Mes Personnages -->
+    <section id="my-characters" class="tab-content active">
+      <h2>Mes Personnages</h2>
+      <div class="character-list" id="my-character-list"></div>
+      <button id="generate-character">Générer un Personnage</button>
+      <div id="generate-timer"></div>
+    </section>
+
+    <!-- Section Tous les Personnages -->
+    <section id="all-characters" class="tab-content">
+      <h2>Tous les Personnages</h2>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Rechercher par nom ou race...">
+        <button id="search-btn">Rechercher</button>
+      </div>
+      <div class="character-list" id="all-character-list"></div>
+      <div class="pagination">
+        <button id="prev-page">Précédent</button>
+        <span id="current-page">1</span>
+        <button id="next-page">Suivant</button>
+      </div>
+    </section>
+
+    <!-- Section Combat -->
+    <section id="battle" class="tab-content">
+      <h2>Combat</h2>
+      <div class="battle-container">
+        <div class="character-select">
+          <h3>Sélectionnez votre personnage:</h3>
+          <div id="battle-character-select"></div>
+        </div>
+        
+        <div class="battle-controls">
+          <button id="start-battle">Lancer un combat aléatoire</button>
+          <div id="battle-info">
+            <p>Combats restants: <span id="battles-remaining">10</span></p>
+            <p>Prochain combat dans: <span id="next-battle-timer">30:00</span></p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="battle-result"></div>
+    </section>
+
+    <!-- Section Journal -->
+    <section id="logs" class="tab-content">
+      <h2>Journal de Combat</h2>
+      <div id="battle-logs"></div>
+    </section>
+
+    <!-- Section Admin -->
+    <section id="admin" class="tab-content">
+      <h2>Zone Admin</h2>
+      <div id="admin-login">
+        <input type="password" id="admin-password" placeholder="Mot de passe">
+        <button id="admin-login-btn">Accéder</button>
+      </div>
+      
+      <div id="admin-panel" style="display: none;">
+        <h3>Créer un personnage</h3>
+        <div class="admin-form">
+          <label>Race:
+            <select id="admin-race">
+              <option value="Elfes">Elfes</option>
+              <option value="Hauts Elfes">Hauts Elfes</option>
+              <!-- Toutes les races -->
+            </select>
+          </label>
+          
+          <label>Sous-race:
+            <select id="admin-subrace">
+              <option value="Elfe noir">Elfe noir</option>
+              <option value="Elfe normal">Elfe normal</option>
+              <!-- Toutes les sous-races -->
+            </select>
+          </label>
+          
+          <label>Dégâts: <input type="number" id="admin-damage" min="1" value="100"></label>
+          <label>Vie: <input type="number" id="admin-health" min="1" value="500"></label>
+          <label>Arme: 
+            <select id="admin-weapon">
+              <option value="rien">rien</option>
+              <option value="épée Normal">épée Normal</option>
+              <!-- Toutes les armes -->
+            </select>
+          </label>
+          
+          <label>ELO: <input type="number" id="admin-elo" min="0" value="50"></label>
+          <label>Shiny: <input type="checkbox" id="admin-shiny"></label>
+          
+          <button id="admin-create-character">Créer le personnage</button>
+        </div>
+        
+        <h3>Personnages existants</h3>
+        <div id="admin-character-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
